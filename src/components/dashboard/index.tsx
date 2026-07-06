@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 export default function Dashboard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(0);
 
   const [nameFilter, setNameFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
 
-  const fetchData = async () => {
+  const fetchData = async (value) => {
     try {
       setLoading(true);
       const response = await fetch(
@@ -23,7 +24,7 @@ export default function Dashboard() {
           body: JSON.stringify({
             appName: "",
             category: "",
-            pageNumber: 0,
+            pageNumber: value || 0,
             pageSize: 25,
           }),
         },
@@ -54,10 +55,21 @@ export default function Dashboard() {
       .includes(categoryFilter.toLowerCase());
     return matchCategory && matchName;
   });
-  console.log("data", FilteredData);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+    fetchData(value);
+    console.log("Page clicked:", value);
+  };
+
   return (
     <Wrapper>
-      <Content loading={loading} filteredData={FilteredData} />
+      <Content
+        loading={loading}
+        filteredData={FilteredData}
+        handleChange={handleChange}
+        page={page}
+      />
       <Filters
         nameFilter={nameFilter}
         setNameFilter={setNameFilter}

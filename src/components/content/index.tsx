@@ -1,4 +1,7 @@
-import { Wrapper, Table } from "./content-styled.ts";
+import { Wrapper, Table, WrapPagination } from "./content-styled.ts";
+
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 interface App {
   appId: string;
@@ -9,10 +12,16 @@ interface App {
 interface ContentProps {
   filteredData: App;
   loading: boolean;
+  page: never;
+  handleChange: never;
 }
 
-export default function Content({ filteredData, loading }: ContentProps) {
-  console.log("FilteredData", filteredData);
+export default function Content({
+  filteredData,
+  loading,
+  handleChange,
+  page,
+}: ContentProps) {
   return (
     <Wrapper>
       {loading ? (
@@ -40,6 +49,26 @@ export default function Content({ filteredData, loading }: ContentProps) {
           </tbody>
         </Table>
       )}
+      <WrapPagination>
+        <Stack spacing={2}>
+          <Pagination
+            count={10}
+            color="primary"
+            page={page}
+            onChange={handleChange}
+            sx={{
+              "& .MuiPaginationItem-root": {
+                color: "white",
+                borderColor: "rgba(255, 255, 255, 0.5)",
+              },
+              "& .Mui-selected": {
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                color: "white",
+              },
+            }}
+          />
+        </Stack>
+      </WrapPagination>
     </Wrapper>
   );
 }
