@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body {
         background: #2E2E2E;
+        padding-bottom: 40px;
     }
     ul {
         list-style: none;
