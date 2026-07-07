@@ -37,4 +37,28 @@ export const Wrapper = styled.aside`
     font-weight: 500;
     color: #fff;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+    nav {
+      height: auto;
+    }
+    ul {
+      display: flex;
+      gap: 10px;
+      padding: 0 10px 10px;
+    }
+    li {
+      width: auto;
+      padding-left: 0;
+      a {
+        padding-left: 5px;
+        &.active {
+          border-left: none;
+          border-bottom: 2.25px solid #b5e600;
+        }
+      }
+    }
+  }
 `;

@@ -14,6 +14,10 @@ export const Wrapper = styled.div`
     font-weight: 300;
     padding: 14px 16px;
   }
+  @media (max-width: 768px) {
+    width: auto;
+    margin: 0 10px;
+  }
 `;
 
 export const FilterGroup = styled.div`

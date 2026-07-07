@@ -20,6 +20,11 @@ const GlobalStyles = createGlobalStyle`
     .d-flex {
         display: flex;
     }
+    @media (max-width: 768px) {
+        .d-flex {
+            flex-direction: column;
+        }
+    }
 
     input:focus,
     input:active {

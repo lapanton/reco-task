@@ -5,6 +5,11 @@ export const Wrapper = styled.div`
   background: #393939;
   margin: 0 10px;
   position: relative;
+  @media (max-width: 768px) {
+    width: auto;
+    padding-bottom: 50px;
+    overflow-x: auto;
+  }
 `;
 
 export const Table = styled.table`

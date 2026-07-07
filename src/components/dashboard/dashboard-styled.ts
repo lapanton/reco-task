@@ -6,4 +6,9 @@ export const Wrapper = styled.div`
   display: flex;
   align-content: stretch;
   gap: 10px;
+  @media (max-width: 768px) {
+    width: 100%;
+    min-height: auto;
+    flex-direction: column-reverse;
+  }
 `;
